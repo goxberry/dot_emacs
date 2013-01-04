@@ -1,0 +1,42 @@
+# .gitignore for my dot_emacs repo
+
+# From http://github.com/github/gitignore/Global/Emacs.gitignore
+# Emacs files to ignore
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# From http://github.com/github/gitignore/Global/Linux.gitignore
+# Linux files to ignore
+.*
+!.gitignore
+*~
+
+# From http://github.com/github/gitignore/Global/OSX.gitignore
+# OS X files to ignore
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# If it's in emacs lisp, I probably want to keep it
+!*.el
+
+# But I don't care about the auto-save-list...
+auto-save-list
