@@ -53,6 +53,9 @@ interactively by “eval-buffer”."
 ;; Emacs will not automatically add new lines
 (setq next-line-add-newlines nil)
 
+;; Force syntax highlighting by default
+(global-font-lock-mode 1)
+
 ; add the dir of this file to load path
 (add-to-list 'load-path (fullpath-relative-to-current-file ""))
 
