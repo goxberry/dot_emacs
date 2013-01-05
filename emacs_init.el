@@ -98,6 +98,9 @@ interactively by “eval-buffer”."
 ;; Use markdown-mode by default on certain file names
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+;; Add on-the-fly spell checking for Markdown files, which are usually
+;; documentation (not always, but usually).
+(add-hook 'markdown-mode-hook 'turn-on-flyspell)
 
 ;; Git-commit mode, from: https://github.com/rafl/git-commit-mode
 (load (fullpath-relative-to-current-file "git-commit"))
