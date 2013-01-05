@@ -99,3 +99,8 @@ interactively by “eval-buffer”."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
+;; Git-commit mode, from: https://github.com/rafl/git-commit-mode
+(load (fullpath-relative-to-current-file "git-commit"))
+;; Add on-the-fly spell checking for Git commit messages
+;; See http://petereisentraut.blogspot.com/2011/01/git-commit-mode.html
+(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
