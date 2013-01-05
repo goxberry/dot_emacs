@@ -1,7 +1,3 @@
-;; Symlink this file to "~/.emacs". In this directory, you would use
-;; "ln -s init_file.el ~/.emacs". Your current directory should be 
-;; "~/.emacs.d".
-
 ;; Slick function to get us out of file name trouble:
 ;; Source: http://ergoemacs.org/emacs/elisp_relative_path.html
 (defun fullpath-relative-to-current-file (file-relative-path)
@@ -37,11 +33,30 @@ interactively by “eval-buffer”."
   (concat (file-name-directory (or load-file-name buffer-file-name)) file-relative-path)
 )
 
-;; In order to make this file nice and tidy (and compatible with both
-;; OS X and Linux without doing anything too too complicated!) just
-;; load from ~/.emacs.d (obviously, in Windows, the directory will be
-;; something different...
-(load "~/.emacs.d/emacs_init.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+;; Force emacs to display column number upon start.
+(column-number-mode)
 
-;; TODO(goxberry@gmail.com): Make this load command more Windows-
-;; compatible!
+; add the dir of this file to load path
+(add-to-list 'load-path (fullpath-relative-to-current-file ""))
+
+; Now, load a bunch of modes
+;; Markdown-mode, from Jason Blevins
+;; See http://jblevins.org/git/markdown-mode.git/
+;; TODO(goxberry@gmail.com): Figure out a nice way to subtree merge or
+;; submodule this beast.
+(load (fullpath-relative-to-current-file "markdown-mode"))
+;; Use markdown-mode by default on certain file names
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
