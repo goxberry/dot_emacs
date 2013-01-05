@@ -107,3 +107,6 @@ interactively by “eval-buffer”."
 ;; Add on-the-fly spell checking for Git commit messages
 ;; See http://petereisentraut.blogspot.com/2011/01/git-commit-mode.html
 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+
+;; Automatically use shell-script-mode on .gitignore files
+(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . shell-script-mode))
