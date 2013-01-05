@@ -47,6 +47,24 @@ interactively by “eval-buffer”."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Modified version of script and instructions to use Solarized 
+;; (http://ethanschoonover.com/solarized) theme to Emacs
+;; see http://codefork.com/blog/index.php/2011/11/27/ \
+;; getting-the-solarized-theme-to-work-in-emacs/ for details
+(add-to-list 'load-path 
+	     (fullpath-relative-to-current-file "emacs-color-theme-solarized"))
+(if
+    (equal 0 (string-match "^24" emacs-version))
+    ;; it's emacs24, so use built-in theme 
+    (require 'solarized-dark-theme)
+  ;; it's NOT emacs24, so use color-theme
+  (progn
+    (require 'color-theme)
+    (color-theme-initialize)
+    (require 'color-theme-solarized)
+    (color-theme-solarized-dark)))
+
 ;; Force emacs to display column number upon start.
 (column-number-mode)
 
@@ -80,3 +98,4 @@ interactively by “eval-buffer”."
 ;; Use markdown-mode by default on certain file names
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+
