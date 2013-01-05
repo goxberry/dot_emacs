@@ -110,3 +110,6 @@ interactively by “eval-buffer”."
 
 ;; Automatically use shell-script-mode on .gitignore files
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . shell-script-mode))
+
+;; Add on-the-fly spell checking for Org-mode files (usually notes)
+(add-hook 'org-mode-hook 'turn-on-flyspell)
