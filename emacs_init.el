@@ -56,6 +56,9 @@ interactively by “eval-buffer”."
 ;; Force syntax highlighting by default
 (global-font-lock-mode 1)
 
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ; add the dir of this file to load path
 (add-to-list 'load-path (fullpath-relative-to-current-file ""))
 
