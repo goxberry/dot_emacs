@@ -50,6 +50,11 @@ interactively by “eval-buffer”."
 ;; Force emacs to display column number upon start.
 (column-number-mode)
 
+;; Set up the keyboard so the <delete> key on both the regular keyboard
+;; and the keypad delete the character under the cursor and to the right
+;; under X, instead of the default, backspace behavior.
+(global-set-key [delete] 'delete-char)
+
 ;; Emacs will not automatically add new lines
 (setq next-line-add-newlines nil)
 
