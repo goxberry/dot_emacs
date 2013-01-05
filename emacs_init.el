@@ -113,3 +113,11 @@ interactively by “eval-buffer”."
 
 ;; Add on-the-fly spell checking for Org-mode files (usually notes)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
+
+;; TODO(goxberry@gmail.com): Add
+;; - cython-mode
+;; - gams-mode
+;; - pandoc-mode
+;; - puppet-mode
+;; - auto-mode-alist commands for the above modes
+;; - an auto-mode-alist command for Vagrantfiles (use ruby-mode)
