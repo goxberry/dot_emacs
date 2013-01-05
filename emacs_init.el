@@ -59,6 +59,10 @@ interactively by “eval-buffer”."
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Scroll down with the cursor,move down the buffer one
+;; line at a time, instead of in larger amounts.
+(setq scroll-step 1)
+
 ; add the dir of this file to load path
 (add-to-list 'load-path (fullpath-relative-to-current-file ""))
 
