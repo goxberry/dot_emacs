@@ -33,6 +33,8 @@ interactively by “eval-buffer”."
   (concat (file-name-directory (or load-file-name buffer-file-name)) file-relative-path)
 )
 
+;; Some emacs behaviors
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -47,6 +49,9 @@ interactively by “eval-buffer”."
  )
 ;; Force emacs to display column number upon start.
 (column-number-mode)
+
+;; Emacs will not automatically add new lines
+(setq next-line-add-newlines nil)
 
 ; add the dir of this file to load path
 (add-to-list 'load-path (fullpath-relative-to-current-file ""))
