@@ -105,29 +105,34 @@ interactively by “eval-buffer”."
 ;; submodule this beast.
 (load (fullpath-relative-to-current-file "markdown-mode"))
 ;; Use markdown-mode by default on certain file names
-(add-to-list 'auto-mode-alist '("\\.md\\'" . (markdown-mode visual-line-mode)))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . (markdown-mode visual-line-mode)))
-;; Add on-the-fly spell checking for Markdown files, which are usually
-;; documentation (not always, but usually).
-(add-hook 'markdown-mode-hook 'turn-on-flyspell)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
 ;; Git-commit mode, from: https://github.com/rafl/git-commit-mode
 (load (fullpath-relative-to-current-file "git-commit"))
-;; Add on-the-fly spell checking for Git commit messages
+
+;; Add on-the-fly spell checking for types of files usually used for
+;; documentation and NOT source code. Also add on-the-fly spell checking
+;; for Git commit messages
 ;; See http://petereisentraut.blogspot.com/2011/01/git-commit-mode.html
+(add-hook 'markdown-mode-hook 'turn-on-flyspell)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'latex-mode-hook 'turn-on-flyspell)
+(add-hook 'tex-mode-hook 'turn-on-flyspell)
+(add-hook 'org-mode-hook 'turn-on-flyspell)
+(add-hook 'bibtex-mode-hook 'turn-on-flyspell)
 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+
+;; Also add visual-line-mode for documentation files
+(add-hook 'markdown-mode-hook 'visual-line-mode)
+(add-hook 'text-mode-hook 'visual-line-mode)
+(add-hook 'latex-mode-hook 'visual-line-mode)
+(add-hook 'tex-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'bibtex-mode-hook 'visual-line-mode)
 
 ;; Automatically use shell-script-mode on .gitignore files
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . shell-script-mode))
-
-;; Add on-the-fly spell checking for Org-mode files (usually notes)
-(add-hook 'org-mode-hook 'turn-on-flyspell)
-(add-to-list 'auto-mode-alist '("\\.org\\'" . (org-mode visual-line-mode)))
-
-;; Add word wrapping for TeX files, text files
-(add-to-list 'auto-mode-alist '("\\.txt\\'" . (text-mode visual-line-mode)))
-(add-to-list 'auto-mode-alist '("\\.tex\\'" . (tex-mode)))
-(add-to-list 'auto-mode-alist '("\\.bib\\'" . (bibtex-mode)))
 
 ;; TODO(goxberry@gmail.com): Add
 ;; - cython-mode
