@@ -48,10 +48,14 @@ interactively by “eval-buffer”."
  ;; If there is more than one, they won't work right.
  )
 
+; add the dir of this file to load path
+(add-to-list 'load-path (fullpath-relative-to-current-file ""))
+
 ;; Modified version of script and instructions to use Solarized 
 ;; (http://ethanschoonover.com/solarized) theme to Emacs
 ;; see http://codefork.com/blog/index.php/2011/11/27/ \
 ;; getting-the-solarized-theme-to-work-in-emacs/ for details
+(load (fullpath-relative-to-current-file "color-theme"))
 (add-to-list 'load-path 
 	     (fullpath-relative-to-current-file "emacs-color-theme-solarized"))
 (if
@@ -66,7 +70,15 @@ interactively by “eval-buffer”."
     (color-theme-solarized-dark)))
 
 ;; Force emacs to display column number upon start.
-(column-number-mode)
+(column-number-mode 1)
+(if
+    (equal 0 (string-match "^22" emacs-version))
+    ;; it's emacs22, so it doesn't have visual-line-mode
+    ()
+  ;; Every other workstation I work on has Emacs version 23 or greater,
+  ;; and thus has visual-line-mode. I'd find the source file and just
+  ;; put it in ~/.emacs.d/ if I could, but I can't seem to find it anywhere.
+  (global-visual-line-mode 0))
 
 ;; Set up the keyboard so the <delete> key on both the regular keyboard
 ;; and the keypad delete the character under the cursor and to the right
@@ -86,9 +98,6 @@ interactively by “eval-buffer”."
 ;; line at a time, instead of in larger amounts.
 (setq scroll-step 1)
 
-; add the dir of this file to load path
-(add-to-list 'load-path (fullpath-relative-to-current-file ""))
-
 ; Now, load a bunch of modes
 ;; Markdown-mode, from Jason Blevins
 ;; See http://jblevins.org/git/markdown-mode.git/
@@ -96,8 +105,8 @@ interactively by “eval-buffer”."
 ;; submodule this beast.
 (load (fullpath-relative-to-current-file "markdown-mode"))
 ;; Use markdown-mode by default on certain file names
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . (markdown-mode visual-line-mode)))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . (markdown-mode visual-line-mode)))
 ;; Add on-the-fly spell checking for Markdown files, which are usually
 ;; documentation (not always, but usually).
 (add-hook 'markdown-mode-hook 'turn-on-flyspell)
@@ -113,6 +122,12 @@ interactively by “eval-buffer”."
 
 ;; Add on-the-fly spell checking for Org-mode files (usually notes)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
+(add-to-list 'auto-mode-alist '("\\.org\\'" . (org-mode visual-line-mode)))
+
+;; Add word wrapping for TeX files, text files
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . (text-mode visual-line-mode)))
+(add-to-list 'auto-mode-alist '("\\.tex\\'" . (tex-mode)))
+(add-to-list 'auto-mode-alist '("\\.bib\\'" . (bibtex-mode)))
 
 ;; TODO(goxberry@gmail.com): Add
 ;; - cython-mode
