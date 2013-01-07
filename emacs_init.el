@@ -142,12 +142,12 @@ interactively by “eval-buffer”."
 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 
 ;; Also add visual-line-mode for documentation files
-(add-hook 'markdown-mode-hook 'visual-line-mode)
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'latex-mode-hook 'visual-line-mode)
-(add-hook 'tex-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'bibtex-mode-hook 'visual-line-mode)
+(add-hook 'markdown-mode-hook (lambda () (visual-line-mode 1)))
+(add-hook 'text-mode-hook (lambda () (visual-line-mode 1)))
+(add-hook 'latex-mode-hook (lambda () (visual-line-mode 1)))
+(add-hook 'tex-mode-hook (lambda () (visual-line-mode 1)))
+(add-hook 'org-mode-hook (lambda () (visual-line-mode 1)))
+(add-hook 'bibtex-mode-hook (lambda () (visual-line-mode 1)))
 
 ;; Automatically use shell-script-mode on .gitignore files
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . shell-script-mode))
