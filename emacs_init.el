@@ -108,6 +108,24 @@ interactively by “eval-buffer”."
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
+;; Pandoc-mode
+(load (fullpath-relative-to-current-file "pandoc-mode"))
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+
+;; Puppet mode
+(load (fullpath-relative-to-current-file "puppet-mode"))
+(add-to-list 'auto-mode-alist '("\\.pp\\'" . puppet-mode))
+
+;; Vagrant mode
+(load (fullpath-relative-to-current-file "vagrant"))
+(add-to-list 'auto-mode-alist '("\Vagrantfile\\'" . vagrant-mode))
+
+;; Cython-mode
+(load (fullpath-relative-to-current-file "cython-mode"))
+
+;; Gams-mode
+(load (fullpath-relative-to-current-file "gams"))
+
 ;; Git-commit mode, from: https://github.com/rafl/git-commit-mode
 (load (fullpath-relative-to-current-file "git-commit"))
 
@@ -133,11 +151,3 @@ interactively by “eval-buffer”."
 
 ;; Automatically use shell-script-mode on .gitignore files
 (add-to-list 'auto-mode-alist '("\\.gitignore\\'" . shell-script-mode))
-
-;; TODO(goxberry@gmail.com): Add
-;; - cython-mode
-;; - gams-mode
-;; - pandoc-mode
-;; - puppet-mode
-;; - auto-mode-alist commands for the above modes
-;; - an auto-mode-alist command for Vagrantfiles (use ruby-mode)
