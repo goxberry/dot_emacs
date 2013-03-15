@@ -4,9 +4,13 @@ This directory contains the custom emacs modes that I use for development.
 
 ## Installation
 
-First, clone the repo into your `~/.emacs.d` directory. *Be advised: this will overwrite your current `~/.emacs.d` directory, so you should probably back this directory up!*
+First, clone the repo into your `~/.emacs.d` directory. *Be advised: you must delete your current `~/.emacs.d` directory, so you should probably back this directory up!*
 
 	git clone https://github.com/goxberry/dot_emacs.git ~/.emacs.d
+	cd ~/.emacs.d
+	git submodule init
+	git submodule update
+	cd ~
 	
 Next, soft-link `nix_init_file.el` in this repo to `~/.emacs`. *Warning: this command will overwrite your current `~/.emacs` file, so you should back it up!*
 
