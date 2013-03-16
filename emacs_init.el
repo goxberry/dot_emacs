@@ -98,6 +98,10 @@ interactively by “eval-buffer”."
 ;; line at a time, instead of in larger amounts.
 (setq scroll-step 1)
 
+;; X11 Copy & Paste to/from Emacs:
+(setq x-select-enable-clipboard t) ; as above
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
 ; Now, load a bunch of modes
 ;; Markdown-mode, from Jason Blevins
 ;; See http://jblevins.org/git/markdown-mode.git/
